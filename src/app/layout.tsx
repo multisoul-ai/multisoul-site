@@ -15,9 +15,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MultiSoul - Personal AI Agent Console",
+  title: "MultiSoul - Control Local AI Agents From Your Phone",
   description:
-    "Remote-control local AI agents from your phone while keeping every byte on your machine.",
+    "Monitor local AI agent work, answer decisions, and connect your machines from iOS or Android.",
 };
 
 export default function RootLayout({
