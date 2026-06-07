@@ -8,229 +8,85 @@ const navItems = [
   { label: "Docs", href: "#docs" },
 ];
 
-const activityRows = [
-  ["10:32:11", "User", "Build analytics dashboard"],
-  ["10:32:12", "Agent", "Planning steps..."],
-  ["10:32:14", "Tool Call", "SearchFiles src/analytics/**"],
-  ["10:32:16", "Tool Call", "ReadFile src/app.ts"],
-  ["10:32:36", "RunCommand", "pnpm test"],
-  ["10:32:44", "Agent", "All tests passed"],
-];
-
 const featureTiles = [
   {
-    title: "Remote control",
+    title: "Run your favorite agent CLI",
     accent: "cyan",
-    body: "Control your local AI agents from anywhere.",
+    body: "Control Claude Code, Codex, or Cursor Agent CLI from your phone.",
+    artSrc: "/brand-refresh/mascot-phone-standing.png",
+    artAlt: "MultiSoul mascot holding a phone",
   },
   {
-    title: "Live status",
+    title: "Follow work live",
     accent: "lime",
-    body: "Real-time messages, tool calls and task progress.",
+    body: "Watch messages, tool calls, and task status in real time, with tool results close behind.",
+    artSrc: "/brand-refresh/mascot-laptop-working.png",
+    artAlt: "MultiSoul mascot working from a laptop",
   },
   {
-    title: "Decision moments",
+    title: "Answer approvals",
     accent: "coral",
-    body: "Approve the exact step that needs your call.",
+    body: "Answer AskUserQuestion prompts and review risky actions without leaving your phone.",
+    artSrc: "/brand-refresh/mascot-decision-pointing.png",
+    artAlt: "MultiSoul mascot pointing at a decision",
   },
   {
-    title: "Task complete",
+    title: "Connect more than one machine",
     accent: "sage",
-    body: "Get notified the moment the work is finished.",
+    body: "Connect one phone to multiple computers and keep every runner close.",
+    artSrc: "/brand-refresh/icon-agent.png",
+    artAlt: "MultiSoul agent icon",
+  },
+];
+
+const quickStartSteps = [
+  {
+    title: "1. Install msctl",
+    detail: "Install the CLI on the computer that runs your agents.",
+    command: "npm install -g @yakami129/msctl",
+    artSrc: "/brand-refresh/icon-agent.png",
+    artAlt: "Agent icon",
+  },
+  {
+    title: "2. Start the local service",
+    detail:
+      "Run quickstart, open the relay tunnel, then Scan QR or Paste connection string in the app.",
+    command: "msctl daemon quickstart",
+    artSrc: "/brand-refresh/icon-activity.png",
+    artAlt: "Activity icon",
+  },
+  {
+    title: "3. Register an agent",
+    detail: "From the project you want to control, register the runtime you already use.",
+    command:
+      "msctl agent codex\nmsctl agent claude-code\nmsctl agent cursor-cli",
+    artSrc: "/brand-refresh/icon-tool-call.png",
+    artAlt: "Tool call icon",
+  },
+  {
+    title: "4. Get the app",
+    detail:
+      "App Store listing in progress. Use GitHub release or a local build today while the listing goes live.",
+    command: "cd mobile\npnpm install\npnpm start",
+    artSrc: "/brand-refresh/icon-chat.png",
+    artAlt: "Chat icon",
   },
 ];
 
 function BrandMark() {
   return (
     <span className="brand-lockup" aria-label="MultiSoul home">
-      <svg
+      <Image
+        alt=""
         aria-hidden="true"
         className="brand-mini"
-        data-multisoul-brand-mark="reference-mascot"
-        viewBox="0 0 64 64"
-      >
-        <path
-          d="M32 18V9"
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeWidth="4"
-        />
-        <circle
-          cx="32"
-          cy="7"
-          fill="var(--cream)"
-          r="5"
-          stroke="currentColor"
-          strokeWidth="4"
-        />
-        <path
-          d="M13 33c1-16 12-25 31-22 12 2 19 12 17 25-2 15-15 23-32 21-17-2-29-13-16-24z"
-          fill="var(--cream)"
-          stroke="currentColor"
-          strokeLinejoin="round"
-          strokeWidth="4"
-        />
-        <path
-          d="M19 31c6-7 28-7 36 0 5 5 3 15-5 19-9 5-28 4-35-2-6-5-5-13 4-17z"
-          fill="currentColor"
-        />
-        <ellipse cx="30" cy="41" fill="var(--cream)" rx="3.5" ry="4" />
-        <ellipse cx="44" cy="41" fill="var(--cream)" rx="3.5" ry="4" />
-        <path
-          d="M18 58c10 4 30 4 39-1"
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeWidth="3.5"
-        />
-      </svg>
+        height={1254}
+        sizes="27px"
+        src="/brand-refresh/mascot-app-icon-badge.png"
+        width={1254}
+      />
       <span>MultiSoul</span>
     </span>
-  );
-}
-
-function Mascot({ className = "" }: { className?: string }) {
-  const isHero = className.split(" ").includes("hero-mascot");
-
-  return (
-    <Image
-      alt="Generated MultiSoul mini robot mascot"
-      className={className}
-      height={1004}
-      loading={isHero ? "eager" : "lazy"}
-      sizes={isHero ? "(max-width: 760px) 210px, 252px" : "116px"}
-      src="/multisoul-mascot-generated.png"
-      width={878}
-    />
-  );
-}
-
-function AgentWindow() {
-  return (
-    <div className="agent-window" aria-label="MultiSoul desktop companion">
-      <div className="agent-window__chrome">
-        <span className="dot dot-coral" />
-        <span className="dot dot-lime" />
-        <span className="dot dot-cyan" />
-        <p>MultiSoul Agent</p>
-        <span className="agent-window__close">x</span>
-      </div>
-
-      <div className="agent-window__task">
-        <div>
-          <p className="mini-label">Task</p>
-          <strong>Build analytics dashboard</strong>
-        </div>
-        <div className="progress-copy">
-          <span>Progress</span>
-          <strong>73%</strong>
-        </div>
-        <div className="progress-track">
-          <span />
-        </div>
-      </div>
-
-      <div className="agent-window__body">
-        <div className="agent-tabs">
-          <strong>LIVE</strong>
-          <span>TOOLS</span>
-          <span>FILES</span>
-          <span>TERMINAL</span>
-        </div>
-        <div className="activity-feed">
-          {activityRows.map(([time, actor, copy]) => (
-            <div className="activity-row" key={`${time}-${actor}`}>
-              <time>{time}</time>
-              <strong>{actor}</strong>
-              <span>{copy}</span>
-            </div>
-          ))}
-        </div>
-        <div className="agent-input">
-          <span>Ask or send a command...</span>
-          <span aria-hidden="true">/</span>
-        </div>
-      </div>
-
-      <div className="decision-card" aria-label="Decision required">
-        <strong>Decision required</strong>
-        <span>Deploy to production?</span>
-        <button type="button">Approve</button>
-        <button type="button">Cancel</button>
-      </div>
-    </div>
-  );
-}
-
-function PhoneMock() {
-  return (
-    <div className="phone-mock" aria-label="MultiSoul mobile app preview">
-      <div className="phone-mock__bar">
-        <span>9:41</span>
-        <span>|||</span>
-      </div>
-      <div className="phone-mock__agent">
-        <span>Local Agent</span>
-        <strong>Claude Code</strong>
-        <em>Connected</em>
-      </div>
-      <div className="phone-tabs">
-        <strong>LIVE</strong>
-        <span>TOOLS</span>
-        <span>FILES</span>
-        <span>LOG</span>
-      </div>
-      <div className="phone-feed">
-        <p>
-          <span>9:41:02</span>
-          <strong>User</strong>
-          Refactor the data layer and add unit tests.
-        </p>
-        <p>
-          <span>9:41:11</span>
-          <strong>Tool Call</strong>
-          ReadFile src/lib/client.ts
-        </p>
-        <p>
-          <span>9:41:34</span>
-          <strong>Claude Code</strong>
-          Running tests...
-        </p>
-      </div>
-      <div className="phone-decision">
-        <strong>Decision required</strong>
-        <span>Approve change to src/lib/repo.ts?</span>
-        <div>
-          <button type="button">Approve</button>
-          <button type="button">Reject</button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function LockNotification() {
-  return (
-    <div className="lock-screen" aria-label="MultiSoul lock screen notifications">
-      <span className="lock-screen__lock">lock</span>
-      <strong>9:41</strong>
-      <span>Monday, June 2</span>
-      <div className="notification-card">
-        <Mascot className="notification-mascot" />
-        <div>
-          <strong>Decision needed</strong>
-          <p>Approve database migration?</p>
-        </div>
-      </div>
-      <div className="notification-card">
-        <Mascot className="notification-mascot" />
-        <div>
-          <strong>Task complete</strong>
-          <p>&quot;Analytics dashboard&quot; finished successfully.</p>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -262,27 +118,35 @@ export default function Home() {
                 <span>In Your Pocket.</span>
               </h1>
               <p>
-                Remote control for Claude Code, Codex, Cursor and more, running
-                on your computer.
+                A mobile console for local AI agents. Watch messages and tool
+                calls in real time, answer approval questions, and receive task
+                completion notifications.
               </p>
               <div className="hero-actions">
-                <Link href="#download" className="button button-primary">
+                <Link href="#quickstart" className="button button-primary">
                   Get Started
                 </Link>
                 <Link href="#product" className="button button-ghost">
                   Watch Demo
                 </Link>
               </div>
+              <p className="hero-note">
+                App Store listing in progress. Use GitHub release or a local
+                build today.
+              </p>
             </div>
 
             <div className="hero-visual" aria-label="MultiSoul hero product visual">
-              <span className="hero-blob" aria-hidden="true" />
-              <span className="orbit-path" aria-hidden="true" />
-              <AgentWindow />
-              <Mascot className="hero-mascot" />
-              <div className="connected-badge">
-                <span aria-hidden="true" />
-                Connected
+              <div className="hero-artwork-shell">
+                <Image
+                  alt="MultiSoul hero feature introduction artwork"
+                  className="hero-artwork"
+                  height={1350}
+                  priority
+                  sizes="(max-width: 760px) 100vw, (max-width: 1180px) calc(100vw - 96px), (max-width: 1240px) 52vw, 680px"
+                  src="/multisoul-feature-intro-en-v2.png"
+                  width={2400}
+                />
               </div>
             </div>
           </div>
@@ -291,31 +155,35 @@ export default function Home() {
 
       <section className="system-section" id="product" aria-labelledby="system-title">
         <div className="system-intro">
-          <p className="section-kicker">06&nbsp;&nbsp; MultiSoul brand manual</p>
-          <h2 id="system-title">Cross-platform application</h2>
-          <strong>One system. Many souls.</strong>
+          <div className="system-intro__meta">
+            <p className="section-kicker">06&nbsp;&nbsp; MultiSoul brand manual</p>
+            <span className="system-intro__rule" aria-hidden="true" />
+          </div>
+          <h2 id="system-title">
+            <span>Cross-platform</span>
+            <span>application</span>
+          </h2>
+          <p className="system-intro__tagline">One system. Many souls.</p>
           <p>
-            MultiSoul lives everywhere you work. Your phone controls agents,
-            your computer runs them, and every approval stays close.
+            MultiSoul lets you control AI agents running on your own computer
+            from your phone.
           </p>
-          <Mascot className="system-mascot" />
+          <p className="system-runtime-copy">
+            There is no central MultiSoul backend. msctl runs locally, stores
+            data locally, and connects your phone through the default public
+            relay tunnel.
+          </p>
         </div>
 
-        <div className="device-grid">
-          <article className="device-card phone-card">
-            <span>Mobile app</span>
-            <PhoneMock />
-          </article>
-          <article className="device-card desktop-card">
-            <span>Desktop companion</span>
-            <div className="laptop-frame">
-              <AgentWindow />
-            </div>
-          </article>
-          <article className="device-card lock-card">
-            <span>Lock screen notification</span>
-            <LockNotification />
-          </article>
+        <div className="product-board">
+          <Image
+            alt="MultiSoul product workflow feature board"
+            className="product-board__image"
+            height={1350}
+            sizes="(max-width: 760px) 100vw, (max-width: 1024px) calc(100vw - 32px), (max-width: 1240px) 62vw, 820px"
+            src="/multisoul-feature-intro-en-v3.png"
+            width={2400}
+          />
         </div>
       </section>
 
@@ -325,15 +193,48 @@ export default function Home() {
         aria-labelledby="features-title"
       >
         <div className="feature-strip__heading">
-          <p className="section-kicker">Remote agent system</p>
-          <h2 id="features-title">Every state has a signal.</h2>
+          <p className="section-kicker">What you can do</p>
+          <h2 id="features-title">A local runtime, with a phone-native control loop.</h2>
         </div>
         <div className="feature-grid">
           {featureTiles.map((tile) => (
             <article className={`feature-card feature-card--${tile.accent}`} key={tile.title}>
-              <Mascot className="feature-mascot" />
+              <Image
+                alt={tile.artAlt}
+                className={`feature-card__art feature-card__art--${tile.accent}`}
+                height={1254}
+                sizes="(max-width: 760px) 72px, 96px"
+                src={tile.artSrc}
+                width={1254}
+              />
               <h3>{tile.title}</h3>
               <p>{tile.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="quickstart-strip" id="quickstart" aria-labelledby="quickstart-title">
+        <div className="quickstart-strip__heading">
+          <p className="section-kicker">Quick Start</p>
+          <h2 id="quickstart-title">From install to first remote agent in four moves.</h2>
+        </div>
+        <div className="quickstart-grid">
+          {quickStartSteps.map((step) => (
+            <article className="quickstart-card" key={step.title}>
+              <Image
+                alt={step.artAlt}
+                className="quickstart-card__art"
+                height={1254}
+                sizes="56px"
+                src={step.artSrc}
+                width={1254}
+              />
+              <h3>{step.title}</h3>
+              <p>{step.detail}</p>
+              <pre>
+                <code>{step.command}</code>
+              </pre>
             </article>
           ))}
         </div>
