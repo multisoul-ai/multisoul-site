@@ -17,7 +17,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "MultiSoul - Your AI Agents In Your Pocket",
   description:
-    "A mobile console for local AI agents with live tool visibility, approval prompts, and completion notifications.",
+    "A mobile console for local AI agents with live tool visibility, approval prompts, completion notifications, and App Store download.",
 };
 
 export default function RootLayout({

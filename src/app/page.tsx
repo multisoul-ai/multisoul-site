@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const appStoreUrl = "https://apps.apple.com/sg/app/multisoul/id6763881771";
+
 const navItems = [
   { label: "Product", href: "#product" },
   { label: "How it works", href: "#how-it-works" },
@@ -66,8 +68,8 @@ const quickStartSteps = [
   {
     title: "4. Get the app",
     detail:
-      "App Store listing in progress. Use GitHub release or a local build today while the listing goes live.",
-    command: "cd mobile\npnpm install\npnpm start",
+      "Available on the App Store. Install MultiSoul, then scan the QR code or paste the connection string from msctl.",
+    command: appStoreUrl,
     artSrc: "/brand-refresh/icon-chat.png",
     artAlt: "Chat icon",
   },
@@ -106,9 +108,14 @@ export default function Home() {
                 </Link>
               ))}
             </div>
-            <Link href="#download" className="download-pill">
+            <a
+              href={appStoreUrl}
+              className="download-pill"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               Download
-            </Link>
+            </a>
           </nav>
 
           <div className="hero-grid">
@@ -126,13 +133,18 @@ export default function Home() {
                 <Link href="#quickstart" className="button button-primary">
                   Get Started
                 </Link>
-                <Link href="#product" className="button button-ghost">
-                  Watch Demo
-                </Link>
+                <a
+                  href={appStoreUrl}
+                  className="button button-ghost"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Download App
+                </a>
               </div>
               <p className="hero-note">
-                App Store listing in progress. Use GitHub release or a local
-                build today.
+                Available on the App Store. Install MultiSoul on iPhone, connect
+                msctl, and keep your local agents within reach.
               </p>
             </div>
 
@@ -245,9 +257,14 @@ export default function Home() {
           <BrandMark />
           <h2 id="download-title">Remotely yours.</h2>
         </div>
-        <Link href="https://github.com/yakami129/multisoul" className="download-band__button">
-          Download
-        </Link>
+        <a
+          href={appStoreUrl}
+          className="download-band__button"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Download on App Store
+        </a>
       </section>
 
       <footer className="site-footer" id="pricing">
